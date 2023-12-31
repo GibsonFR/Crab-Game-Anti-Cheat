@@ -8,9 +8,8 @@ global using HarmonyLib;
 global using System.Collections.Generic;
 global using System;
 using System.Linq;
-using System.Timers;
 
-namespace GibsonAntiCheat
+namespace GibsonCrabGameAntiCheat
 {
     [BepInPlugin("A75EF38C-134F-4BD3-ABD0-C5FBC5EB5C9E", "Gibson Anti Cheat", "1.1.0")]
     public class Plugin : BasePlugin
@@ -18,7 +17,7 @@ namespace GibsonAntiCheat
         public override void Load()
         {
             ClassInjector.RegisterTypeInIl2Cpp<FlungDetector>();
-            ClassInjector.RegisterTypeInIl2Cpp<ItemChecker>();
+            ClassInjector.RegisterTypeInIl2Cpp<ItemDetector>();
             ClassInjector.RegisterTypeInIl2Cpp<Basics>();
 
             Harmony.CreateAndPatchAll(typeof(Plugin));
@@ -162,7 +161,7 @@ namespace GibsonAntiCheat
             }
         }
 
-        public class ItemChecker : MonoBehaviour
+        public class ItemDetector : MonoBehaviour
         {
             float elapsed;
 
@@ -190,9 +189,9 @@ namespace GibsonAntiCheat
                 }
             }
 
-            public string FindChildren(GameObject parent, string chemin)
+            public string FindChildren(GameObject parent, string path)
             {
-                Transform target = parent.transform.Find(chemin);
+                Transform target = parent.transform.Find(path);
                 if (target != null && target.childCount > 0)
                 {
                     return target.GetChild(0).name;
@@ -267,7 +266,7 @@ namespace GibsonAntiCheat
             text.raycastTarget = false;
 
             FlungDetector flungDetector = menuObject.AddComponent<FlungDetector>();
-            ItemChecker itemChecker = menuObject.AddComponent<ItemChecker>();
+            ItemDetector itemChecker = menuObject.AddComponent<ItemDetector>();
             Basics basics = menuObject.AddComponent<Basics>();
 
             menuObject.transform.SetParent(__instance.transform);
