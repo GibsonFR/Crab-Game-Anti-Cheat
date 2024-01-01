@@ -327,28 +327,25 @@ namespace GibsonCrabGameAntiCheat
 
         public class Selector : MonoBehaviour
         {
-            DateTime start2 = DateTime.Now;
+            float elapsed;
 
             void Update()
             {
-                DateTime end = DateTime.Now;
+                elapsed += Time.deltaTime;
 
-                TimeSpan ts2 = (end - start2);
-
-                if (Input.GetKey("left") && Variables.playerIndex > 0 && ts2.TotalMilliseconds >= 200)
+                if (Input.GetKey("left") && Variables.playerIndex > 0 && elapsed >= 0.2f)
                 {
                     Utility.PlayMenuSound();
-                    start2 = DateTime.Now;
                     Variables.playerIndex -= 1;
                     Il2CppSystem.Collections.Generic.Dictionary<ulong, PlayerType> activePlayers = Variables.gameManager.activePlayers;
                     Variables.smoothedSpeed = 0;
                     ChatBox.Instance.ForceMessage("<color=green>Selecteur = " + Variables.playerIndex.ToString());
                     Variables.lastOtherPlayerPosition = activePlayers.entries.ToList()[Variables.playerIndex].value.transform.position;
+                    elapsed = 0f;
                 }
-                if (Input.GetKey("right") && Variables.playerIndex < 40 && ts2.TotalMilliseconds >= 200)
+                if (Input.GetKey("right") && Variables.playerIndex < 40 && elapsed >= 0.2f)
                 {
                     Utility.PlayMenuSound();
-                    start2 = DateTime.Now;
                     Il2CppSystem.Collections.Generic.Dictionary<ulong, PlayerType> activePlayers = Variables.gameManager.activePlayers;
 
                     if (Variables.playerIndex < activePlayers.count - 1)
@@ -358,6 +355,7 @@ namespace GibsonCrabGameAntiCheat
                     Variables.smoothedSpeed = 0;
                     ChatBox.Instance.ForceMessage("<color=green>Selecteur = " + Variables.playerIndex.ToString());
                     Variables.lastOtherPlayerPosition = activePlayers.entries.ToList()[Variables.playerIndex].value.transform.position;
+                    elapsed = 0f;
                 }
             }
         }
