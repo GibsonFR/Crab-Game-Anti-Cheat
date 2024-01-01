@@ -14,7 +14,7 @@ global using System.Globalization;
 
 namespace GibsonCrabGameAntiCheat
 {
-    [BepInPlugin("A75EF38C-134F-4BD3-ABD0-C5FBC5EB5C9E", "Gibson Anti Cheat", "1.1.0")]
+    [BepInPlugin("A75EF38C-134F-4BD3-ABD0-C5FBC5EB5C9E", "Gibson Crab Game Anti Cheat", "1.2.0")]
     public class Plugin : BasePlugin
     {
         public override void Load()
