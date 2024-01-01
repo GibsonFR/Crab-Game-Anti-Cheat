@@ -43,7 +43,7 @@ namespace GibsonCrabGameAntiCheat
                         init = true;
                 }
 
-                if (elapsed > 1)
+                if (elapsed > 0.2f)
                 {
                     Variables.playersList = Variables.gameManager.activePlayers.entries.ToList();
                     Variables.modeId = GameData.GetModeId();
@@ -206,9 +206,9 @@ namespace GibsonCrabGameAntiCheat
             {
                 if (itemName == "Snowball(Clone)") return false;
 
-                if ((itemName == "Pistol(Clone)" ||
-                     itemName == "Katana(Clone)" || itemName == "Knife(Clone)" ||
-                     itemName == "MetalPipe(Clone)") && modeId != 7)
+                if ((itemName == "Pistol(Clone)" || itemName == "Katana(Clone)" || 
+                     itemName == "Knife(Clone)" || itemName == "MetalPipe(Clone)") && 
+                     modeId != 7)
                 {
                     return true;
                 }
