@@ -3,7 +3,7 @@
 // also, some of these are accurate/original names and some are completely made up
 // based on what they do and what objects theyre attached to.
 global using LobbySettings = MonoBehaviourPublicObjomaOblogaTMObseprUnique;
-global using Chatbox = MonoBehaviourPublicRaovTMinTemeColoonCoUnique;
+global using ChatBox = MonoBehaviourPublicRaovTMinTemeColoonCoUnique;
 global using ServerConfig = ObjectPublicInSiInInInInInInInInUnique;
 global using Client = ObjectPublicBoInBoCSItBoInSiBySiUnique;
 global using ServerHandle = MonoBehaviourPublicPlVoUI9GaVoUI9UsPlUnique;
