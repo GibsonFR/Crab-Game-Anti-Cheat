@@ -519,8 +519,11 @@ namespace GibsonCrabGameAntiCheat
                         if (modeId != 7) return true;
                         else return false;
                     case "Knife(Clone)":
-                        if (modeId != 7) return true;
-                        else return false;
+                        switch (modeId)
+                        {
+                            case 7 or 5: return false;
+                            default: return true;
+                        }
                     case "MetalPipe(Clone)":
                         if (modeId != 7) return true;
                         else return false;
